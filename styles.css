@@ -52,4 +52,20 @@ h1, h2, h3, h4 {
 #cursor.active {
     transform: translate(-50%, -50%) scale(2);
 }
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    color: var(--light);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 0 40px;
+}
 
