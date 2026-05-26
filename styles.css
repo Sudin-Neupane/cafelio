@@ -69,3 +69,19 @@ h1, h2, h3, h4 {
     padding: 0 40px;
 }
 
+.hero h1 {
+    font-size: clamp(4rem, 10vw, 8rem);
+    margin-bottom: 2rem;
+    letter-spacing: -0.05em;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    max-width: 500px;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
