@@ -85,3 +85,28 @@ h1, h2, h3, h4 {
     opacity: 0.9;
 }
 
+
+.hero-btn,
+.btn {
+    display: inline-block;
+    padding: 18px 40px;
+    background: transparent;
+    border: 2px solid var(--secondary);
+    color: var(--light);
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    text-decoration: none;
+}
+
+.hero-btn:hover,
+.btn:hover {
+    background: var(--secondary);
+    color: var(--dark);
+    transform: translateY(-5px);
+}
