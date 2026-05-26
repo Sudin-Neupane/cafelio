@@ -1,0 +1,31 @@
+:root {
+    --primary: #1a1a1a;
+    --secondary: #d4c0a1;
+    --accent: #8b4513;
+    --light: #f8f4f0;
+    --dark: #0a0a0a;
+    --transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    --font-primary: 'Playfair Display', serif;
+    --font-secondary: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-secondary);
+    color: var(--primary);
+    background-color: var(--light);
+    overflow-x: hidden;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    line-height: 1.2;
+}
