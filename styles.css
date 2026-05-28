@@ -198,3 +198,16 @@ section {
     border: 20px solid var(--primary);
     box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
+
+.menu {
+    background: var(--dark);
+    color: var(--light);
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
