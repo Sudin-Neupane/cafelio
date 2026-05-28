@@ -211,3 +211,18 @@ section {
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
 }
+
+.menu-item {
+    position: relative;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu-item:hover {
+    transform: translateY(-10px);
+    background: rgba(212, 192, 161, 0.1);
+    border-color: var(--secondary);
+}
