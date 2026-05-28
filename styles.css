@@ -140,3 +140,26 @@ h1, h2, h3, h4 {
     background: url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
     z-index: 1;
 }
+
+section {
+    padding: 120px 0;
+    position: relative;
+}
+
+.section-title {
+    font-size: 4rem;
+    margin-bottom: 80px;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100px;
+    height: 4px;
+    background: var(--accent);
+}
