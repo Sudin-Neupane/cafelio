@@ -355,3 +355,24 @@ section {
     height: 150px;
     resize: vertical;
 }
+
+.submit-btn {
+    background: var(--secondary);
+    color: var(--dark);
+    border: none;
+    padding: 18px 40px;
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: block;
+    width: 100%;
+    font-weight: 700;
+}
+
+.submit-btn:hover {
+    background: var(--light);
+    transform: translateY(-5px);
+}
