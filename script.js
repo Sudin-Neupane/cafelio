@@ -1,36 +1,31 @@
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.onclick = e => {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
+        document.querySelector(link.getAttribute('href'))
+            .scrollIntoView({ behavior: 'smooth' });
+    };
 });
 
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('appear');
-            entry.target.classList.add('animated');
+// Scroll animations
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(item => {
+        if (item.isIntersecting) {
+            item.target.classList.add('appear', 'animated');
         }
     });
-}, observerOptions);
-
-document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
-    observer.observe(el);
 });
 
+document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right')
+    .forEach(el => observer.observe(el));
+
+// Form submission
 const form = document.querySelector('form');
+
 if (form) {
-    form.addEventListener('submit', function(e) {
+    form.onsubmit = e => {
         e.preventDefault();
-        alert('Thank you for your message! We will get back to you soon.');
+        alert('Message sent!');
         form.reset();
-    });
+    };
 }
