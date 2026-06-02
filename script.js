@@ -1,31 +1,13 @@
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.onclick = e => {
-        e.preventDefault();
-        document.querySelector(link.getAttribute('href'))
-            .scrollIntoView({ behavior: 'smooth' });
-    };
-});
+﻿/* cafelio script */
 
-// Scroll animations
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(item => {
-        if (item.isIntersecting) {
-            item.target.classList.add('appear', 'animated');
-        }
-    });
-});
+const $ = (selector, root = document) => root.querySelector(selector);
+const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+const lerp = (start, end, t) => start + (end - start) * t;
 
-document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right')
-    .forEach(el => observer.observe(el));
-
-// Form submission
-const form = document.querySelector('form');
-
-if (form) {
-    form.onsubmit = e => {
-        e.preventDefault();
-        alert('Message sent!');
-        form.reset();
-    };
+function addStyle(css) {
+  const node = document.createElement('style');
+  node.textContent = css;
+  document.head.appendChild(node);
+  return node;
 }
