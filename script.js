@@ -28,3 +28,21 @@ function initGrain() {
     opacity: '0.055',
     mixBlendMode: 'overlay',
   });
+
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+
+  function paint() {
+    const image = ctx.createImageData(size, size);
+    const data = image.data;
+    for (let i = 0; i < data.length; i += 4) {
+      const grey = (Math.random() * 255) | 0;
+      data[i] = data[i + 1] = data[i + 2] = grey;
+      data[i + 3] = 255;
+    }
+    ctx.putImageData(image, 0, 0);
+    requestAnimationFrame(paint);
+  }
+
+  paint();
+}
