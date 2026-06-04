@@ -66,3 +66,20 @@ function initCursor() {
     transform: 'translate(-50%, -50%)',
     transition: 'background 0.2s',
   });
+
+  Object.assign(ring.style, {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '36px',
+    height: '36px',
+    borderRadius: '50%',
+    border: '1.5px solid #d4c0a1',
+    pointerEvents: 'none',
+    zIndex: 9999,
+    transform: 'translate(-50%, -50%)',
+    transition: 'width 0.3s, height 0.3s, border-color 0.3s, opacity 0.3s',
+  });
+
+  document.body.append(dot, ring);
+  
