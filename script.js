@@ -46,3 +46,23 @@ function initGrain() {
 
   paint();
 }
+
+function initCursor() {
+  const dot = document.createElement('div');
+  const ring = document.createElement('div');
+  dot.id = 'cur-dot';
+  ring.id = 'cur-ring';
+
+  Object.assign(dot.style, {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '8px',
+    height: '8px',
+    borderRadius: '50%',
+    background: '#d4c0a1',
+    pointerEvents: 'none',
+    zIndex: 10000,
+    transform: 'translate(-50%, -50%)',
+    transition: 'background 0.2s',
+  });
