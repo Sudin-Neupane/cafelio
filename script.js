@@ -133,3 +133,22 @@ function initHeader() {
     transition: 'padding 0.4s, background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s',
     background: 'transparent',
   });
+  window.addEventListener('scroll', () => {
+    const compact = window.scrollY > 80;
+    header.style.padding = compact ? '14px 0' : '28px 0';
+    header.style.background = compact ? 'rgba(10, 10, 10, 0.92)' : 'transparent';
+    header.style.boxShadow = compact ? '0 2px 40px rgba(0,0,0,0.5)' : 'none';
+    header.style.backdropFilter = compact ? 'blur(12px)' : 'none';
+  }, { passive: true });
+}
+function initSmoothScroll() {
+  document.addEventListener('click', event => {
+    const anchor = event.target.closest('a[href^="#"]');
+    if (!anchor) return;
+    const target = $(anchor.getAttribute('href'));
+    if (!target) return;
+
+    event.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+}
