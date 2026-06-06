@@ -95,3 +95,41 @@ function initCursor() {
     dot.style.top = `${mouseY}px`;
   });
   
+  function updateRing() {
+    ringX = lerp(ringX, mouseX, 0.12);
+    ringY = lerp(ringY, mouseY, 0.12);
+    ring.style.left = `${ringX}px`;
+    ring.style.top = `${ringY}px`;
+    requestAnimationFrame(updateRing);
+  }
+
+
+  
+  updateRing();
+
+  document.addEventListener('mouseover', event => {
+    const target = event.target.closest('a, button, .menu-item, .btn, .submit-btn');
+    const hovered = Boolean(target);
+    ring.style.width = hovered ? '60px' : '36px';
+    ring.style.height = hovered ? '60px' : '36px';
+    ring.style.borderColor = hovered ? '#8b4513' : '#d4c0a1';
+    dot.style.background = hovered ? '#8b4513' : '#d4c0a1';
+  });
+
+  document.documentElement.style.cursor = 'none';
+}
+
+function initHeader() {
+  const header = $('header');
+  if (!header) return;
+
+  Object.assign(header.style, {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    zIndex: '1000',
+    padding: '28px 0',
+    transition: 'padding 0.4s, background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s',
+    background: 'transparent',
+  });
