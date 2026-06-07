@@ -152,3 +152,28 @@ function initSmoothScroll() {
     target.scrollIntoView({ behavior: 'smooth' });
   });
 }
+
+function initReveal() {
+  addStyle(`
+    .fade-in, .slide-in-left, .slide-in-right, .scale-in {
+      opacity: 0;
+      transition: opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1);
+    }
+    .fade-in { transform: translateY(40px); }
+    .slide-in-left { transform: translateX(-60px); }
+    .slide-in-right { transform: translateX(60px); }
+    .scale-in { transform: scale(0.88); }
+    .revealed { opacity: 1; transform: none; }
+  `);
+  const elements = $$('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
+  if (!elements.length) return;
+
+  const groups = new Map();
+  elements.forEach(el => {
+    const parent = el.parentElement;
+    if (!parent) return;
+    const list = groups.get(parent) || [];
+    list.push(el);
+    groups.set(parent, list);
+  });
+  
