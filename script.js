@@ -177,3 +177,8 @@ function initReveal() {
     groups.set(parent, list);
   });
   
+  groups.forEach(list => {
+    list.forEach((el, index) => {
+      el.style.transitionDelay = `${index * 0.12}s`;
+    });
+  });
