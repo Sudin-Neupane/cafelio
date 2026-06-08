@@ -182,3 +182,14 @@ function initReveal() {
       el.style.transitionDelay = `${index * 0.12}s`;
     });
   });
+  
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('revealed');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.12 });
+
+  elements.forEach(el => observer.observe(el));
+}
