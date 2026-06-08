@@ -193,3 +193,23 @@ function initReveal() {
 
   elements.forEach(el => observer.observe(el));
 }
+function initParallax() {
+  const heroContent = $('.hero-content');
+  const heroImage = $('.hero-image');
+  const aboutImage = $('.about-image');
+  const expImage = $('.experience-image');
+  if (!heroContent && !heroImage && !aboutImage && !expImage) return;
+
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (heroContent) heroContent.style.transform = `translateY(${y * 0.25}px)`;
+    if (heroImage) heroImage.style.transform = `translateY(${y * 0.15}px)`;
+
+    [aboutImage, expImage].forEach(el => {
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const ratio = (rect.top + rect.height * 0.5) / window.innerHeight - 0.5;
+      el.style.backgroundPositionY = `${50 + ratio * 20}%`;
+    });
+  }, { passive: true });
+}
