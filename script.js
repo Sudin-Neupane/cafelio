@@ -224,3 +224,15 @@ function initTypewriter() {
     'Where Ritual Meets Flavour',
     'Every Sip, a Story',
   ];
+  addStyle(`@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }`);
+
+  const cursor = document.createElement('span');
+  Object.assign(cursor.style, {
+    borderRight: '4px solid #d4c0a1',
+    marginLeft: '2px',
+    animation: 'blink 0.75s step-end infinite',
+  });
+  
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
