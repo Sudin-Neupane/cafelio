@@ -213,3 +213,14 @@ function initParallax() {
     });
   }, { passive: true });
 }
+
+function initTypewriter() {
+  const heading = $('.hero h1');
+  if (!heading) return;
+
+  const phrases = [
+    'Experience the Art of Coffee',
+    'Crafted Cup by Cup',
+    'Where Ritual Meets Flavour',
+    'Every Sip, a Story',
+  ];
