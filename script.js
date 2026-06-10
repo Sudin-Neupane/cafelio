@@ -236,3 +236,28 @@ function initTypewriter() {
   let phraseIndex = 0;
   let charIndex = 0;
   let deleting = false;
+
+  heading.textContent = '';
+  heading.appendChild(cursor);
+
+  function tick() {
+    const phrase = phrases[phraseIndex];
+
+    if (!deleting) {
+      charIndex += 1;
+      heading.textContent = phrase.slice(0, charIndex);
+      heading.appendChild(cursor);
+      if (charIndex === phrase.length) {
+        deleting = true;
+        return setTimeout(tick, 1800);
+      }
+    } else {
+      charIndex -= 1;
+      heading.textContent = phrase.slice(0, charIndex);
+      heading.appendChild(cursor);
+      if (charIndex === 0) {
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        return setTimeout(tick, 400);
+      }
+    }
