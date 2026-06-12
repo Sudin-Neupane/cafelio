@@ -261,3 +261,30 @@ function initTypewriter() {
         return setTimeout(tick, 400);
       }
     }
+    
+    setTimeout(tick, deleting ? 45 : 90);
+  }
+
+  setTimeout(tick, 800);
+}
+
+function initMagneticButtons() {
+  const buttons = $$('.btn, .submit-btn, .hero-btn');
+  buttons.forEach(button => {
+    button.addEventListener('mousemove', event => {
+      const rect = button.getBoundingClientRect();
+      const x = (event.clientX - rect.left - rect.width / 2) * 0.35;
+      const y = (event.clientY - rect.top - rect.height / 2) * 0.35;
+      button.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    button.addEventListener('mouseleave', () => {
+      button.style.transform = '';
+      button.style.transition = 'transform 0.5s cubic-bezier(.16,1,.3,1)';
+    });
+
+    button.addEventListener('mouseenter', () => {
+      button.style.transition = 'transform 0.1s';
+    });
+  });
+}
