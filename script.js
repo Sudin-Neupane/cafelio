@@ -288,3 +288,21 @@ function initMagneticButtons() {
     });
   });
 }
+function initTiltCards() {
+  $$('.menu-item').forEach(card => {
+    card.addEventListener('mousemove', event => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      const rotateX = clamp(-y * 14, -14, 14);
+      const rotateY = clamp(x * 14, -14, 14);
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
+      card.style.transition = 'transform 0.08s';
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.transition = 'transform 0.6s cubic-bezier(.16,1,.3,1)';
+    });
+  });
+}
