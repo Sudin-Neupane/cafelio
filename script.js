@@ -322,4 +322,25 @@ function initSteam() {
     opacity: '0.55',
   });
 
+function initSteam() {
+  const hero = $('.hero');
+  if (!hero) return;
+
+  const canvas = document.createElement('canvas');
+  Object.assign(canvas.style, {
+    position: 'absolute',
+    inset: '0',
+    width: '100%',
+    height: '100%',
+    pointerEvents: 'none',
+    zIndex: 1,
+    opacity: '0.55',
+  });
+
+  hero.style.position = 'relative';
+  hero.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d');
+  let width = 0;
+  let height = 0;
  
