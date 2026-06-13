@@ -306,3 +306,20 @@ function initTiltCards() {
     });
   });
 }
+
+function initSteam() {
+  const hero = $('.hero');
+  if (!hero) return;
+
+  const canvas = document.createElement('canvas');
+  Object.assign(canvas.style, {
+    position: 'absolute',
+    inset: '0',
+    width: '100%',
+    height: '100%',
+    pointerEvents: 'none',
+    zIndex: 1,
+    opacity: '0.55',
+  });
+
+ 
