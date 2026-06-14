@@ -340,3 +340,21 @@ function initSteam() {
     }
   }
 }
+    reset(fromTop) {
+      this.x = width * 0.55 + (Math.random() - 0.5) * width * 0.6;
+      this.y = fromTop ? Math.random() * height : height + 20;
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = -(0.4 + Math.random() * 0.6);
+      this.life = 0;
+      this.maxLife = 160 + Math.random() * 120;
+      this.radius = 1.5 + Math.random() * 3;
+    }
+
+    update() {
+      this.x += this.vx + Math.sin(this.life * 0.04) * 0.4;
+      this.y += this.vy;
+      this.life += 1;
+      if (this.life > this.maxLife || this.y < -20) {
+        this.reset(false);
+      }
+    }
