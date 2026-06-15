@@ -338,8 +338,7 @@ function initSteam() {
     constructor(fromTop) {
       this.reset(fromTop);
     }
-  }
-}
+
     reset(fromTop) {
       this.x = width * 0.55 + (Math.random() - 0.5) * width * 0.6;
       this.y = fromTop ? Math.random() * height : height + 20;
@@ -367,7 +366,8 @@ function initSteam() {
       ctx.fill();
     }
   }
-    const particles = Array.from({ length: 120 }, () => new SteamParticle(true));
+
+  const particles = Array.from({ length: 120 }, () => new SteamParticle(true));
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
