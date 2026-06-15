@@ -367,5 +367,19 @@ function initSteam() {
       ctx.fill();
     }
   }
-  
+    const particles = Array.from({ length: 120 }, () => new SteamParticle(true));
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  animate();
+}
     
