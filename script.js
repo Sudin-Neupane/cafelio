@@ -358,3 +358,14 @@ function initSteam() {
         this.reset(false);
       }
     }
+    
+    draw() {
+      const alpha = Math.sin((this.life / this.maxLife) * Math.PI) * 0.18;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(212,192,161,${alpha})`;
+      ctx.fill();
+    }
+  }
+  
+    
