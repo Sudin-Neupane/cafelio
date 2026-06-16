@@ -382,4 +382,22 @@ function initSteam() {
   window.addEventListener('resize', resize);
   animate();
 }
+function initMarquee() {
+  const menu = $('#menu');
+  if (!menu || !menu.parentNode) return;
+
+  const words = ['Espresso', '✦', 'Ritual', '✦', 'Single Origin', '✦', 'Terroir', '✦', 'Barista Craft', '✦', 'Pour Over', '✦', 'Cold Brew', '✦', 'Reserve Blend', '✦'];
+  const track = document.createElement('div');
+  track.className = 'marquee-track';
+  track.innerHTML = `<div class="marquee-inner">${words.concat(words).map(word => `<span class="marquee-word">${word}</span>`).join('')}</div>`;
+  menu.parentNode.insertBefore(track, menu.nextElementSibling);
+
+  addStyle(`
+    .marquee-track { overflow: hidden; background: #8b4513; padding: 18px 0; position: relative; z-index: 10; }
+    .marquee-inner { display: flex; white-space: nowrap; animation: marquee-scroll 28s linear infinite; }
+    .marquee-word { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: #f8f4f0; letter-spacing: 3px; text-transform: uppercase; padding: 0 30px; opacity: 0.9; }
+    @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  `);
+}
+
     
