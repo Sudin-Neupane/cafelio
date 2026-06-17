@@ -401,3 +401,26 @@ function initMarquee() {
 }
 
     
+function initActiveNav() {
+  const sections = $$('section[id]');
+  const links = $$('header nav a');
+  if (!sections.length || !links.length) return;
+
+  addStyle(`
+    header nav a.nav-active { color: #d4c0a1 !important; }
+    header nav a.nav-active::after { content: ''; display: block; position: absolute; bottom: -3px; left: 0; width: 100%; height: 1px; background: #d4c0a1; }
+  `);
+
+  window.addEventListener('scroll', () => {
+    let activeId = '';
+    sections.forEach(section => {
+      if (window.scrollY >= section.offsetTop - 200) {
+        activeId = section.id;
+      }
+    });
+
+    links.forEach(link => {
+      link.classList.toggle('nav-active', link.getAttribute('href') === `#${activeId}`);
+    });
+  }, { passive: true });
+}
