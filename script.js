@@ -436,4 +436,10 @@ function initCounters() {
     <div class="stat-item"><span class="stat-num" data-target="32">0</span><span class="stat-label">Origin Countries</span></div>
     <div class="stat-item"><span class="stat-num" data-target="98">0</span><span class="stat-label">% Arabica Beans</span></div>
   `;
+    addStyle(`
+    .stat-strip { display: flex; gap: 32px; margin-top: 40px; }
+    .stat-item { display: flex; flex-direction: column; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; color: #8b4513; line-height: 1; }
+    .stat-label { font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.65; margin-top: 4px; }
+  `);
   
