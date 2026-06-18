@@ -424,3 +424,16 @@ function initActiveNav() {
     });
   }, { passive: true });
 }
+
+function initCounters() {
+  const about = $('.about-text');
+  if (!about) return;
+
+  const strip = document.createElement('div');
+  strip.className = 'stat-strip';
+  strip.innerHTML = `
+    <div class="stat-item"><span class="stat-num" data-target="14">0</span><span class="stat-label">Years of Craft</span></div>
+    <div class="stat-item"><span class="stat-num" data-target="32">0</span><span class="stat-label">Origin Countries</span></div>
+    <div class="stat-item"><span class="stat-num" data-target="98">0</span><span class="stat-label">% Arabica Beans</span></div>
+  `;
+  
