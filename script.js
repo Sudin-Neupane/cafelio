@@ -442,4 +442,25 @@ function initCounters() {
     .stat-num { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; color: #8b4513; line-height: 1; }
     .stat-label { font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.65; margin-top: 4px; }
   `);
-  
+  about.appendChild(strip);
+
+  let started = false;
+  const observer = new IntersectionObserver(entries => {
+    if (started) return;
+    if (!entries[0].isIntersecting) return;
+    started = true;
+
+    $$('.stat-num').forEach(el => {
+      const target = Number(el.dataset.target) || 0;
+      let current = 0;
+      const step = () => {
+        current = Math.min(current + Math.ceil(target / 40), target);
+        el.textContent = current;
+        if (current < target) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(strip);
+}  
