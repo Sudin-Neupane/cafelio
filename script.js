@@ -464,3 +464,40 @@ function initCounters() {
 
   observer.observe(strip);
 }  
+
+function initScrambleTitles() {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
+
+  class Scrambler {
+    constructor(el) {
+      this.el = el;
+      this.text = el.textContent.trim();
+      this.run();
+    }
+
+    run() {
+      let progress = 0;
+      const interval = setInterval(() => {
+        this.el.textContent = this.text.split('').map((char, index) => {
+          if (char === ' ' || index < progress) return char;
+          return chars[Math.floor(Math.random() * chars.length)];
+        }).join('');
+
+        if (progress >= this.text.length) {
+          clearInterval(interval);
+        }
+        progress += 0.6;
+      }, 35);
+    }
+  }
+  
+ const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      new Scrambler(entry.target);
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.6 });
+
+  $$('.section-title h2').forEach(el => observer.observe(el));
+}
