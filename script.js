@@ -501,3 +501,19 @@ function initScrambleTitles() {
 
   $$('.section-title h2').forEach(el => observer.observe(el));
 }
+
+function initContactForm() {
+  const form = $('.contact-form form');
+  if (!form) return;
+
+  const button = $('.submit-btn', form);
+  addStyle(`
+    .form-success { text-align: center; padding: 40px; color: #d4c0a1; }
+    .form-success svg { width: 60px; height: 60px; margin-bottom: 16px; stroke: #d4c0a1; }
+    .form-success h3 { font-family: 'Playfair Display', serif; font-size: 2rem; }
+    .form-success p { opacity: 0.7; margin-top: 8px; }
+    .field-shake { animation: shake 0.4s; }
+    @keyframes shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
+  `);
+
+  
