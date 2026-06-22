@@ -517,3 +517,17 @@ function initContactForm() {
   `);
 
   
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    let valid = true;
+
+    $$('.contact-form input, .contact-form textarea').forEach(field => {
+      if (!field.value.trim()) {
+        valid = false;
+        field.classList.remove('field-shake');
+        void field.offsetWidth;
+        field.classList.add('field-shake');
+        field.style.borderColor = '#c0392b';
+        setTimeout(() => { field.style.borderColor = ''; }, 800);
+      }
+    });
