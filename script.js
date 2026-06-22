@@ -531,3 +531,22 @@ function initContactForm() {
         setTimeout(() => { field.style.borderColor = ''; }, 800);
       }
     });
+
+    
+    if (!valid) return;
+
+    button.textContent = 'Sending…';
+    button.disabled = true;
+
+    setTimeout(() => {
+      form.innerHTML = `
+        <div class="form-success">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+          <h3>Message Sent</h3>
+          <p>We'll be in touch over a cup of something warm.</p>
+        </div>`;
+    }, 1200);
+  });
+}
