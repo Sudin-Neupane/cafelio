@@ -550,3 +550,26 @@ function initContactForm() {
     }, 1200);
   });
 }
+function initLoader() {
+  const loader = document.createElement('div');
+  loader.id = 'page-loader';
+  loader.innerHTML = `
+    <div style="position: relative;">
+      <div class="loader-ring"></div>
+      <div class="loader-dot"></div>
+    </div>`;
+
+  addStyle(`
+    #page-loader { position: fixed; inset: 0; background: #0a0a0a; display: flex; align-items: center; justify-content: center; z-index: 99999; transition: opacity 0.7s ease, visibility 0.7s; }
+    #page-loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-ring { width: 60px; height: 60px; border-radius: 50%; border: 2px solid rgba(212,192,161,0.15); border-top-color: #d4c0a1; animation: spin 0.9s linear infinite; }
+    .loader-dot { position: absolute; width: 8px; height: 8px; background: #8b4513; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  `);
+
+  document.body.prepend(loader);
+  window.addEventListener('load', () => {
+    setTimeout(() => loader.classList.add('hidden'), 600);
+  });
+}
+
