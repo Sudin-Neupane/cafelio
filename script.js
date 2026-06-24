@@ -573,3 +573,23 @@ function initLoader() {
   });
 }
 
+function initHeroHover() {
+  const hero = $('.hero');
+  const heroImage = $('.hero-image');
+  if (!hero || !heroImage) return;
+
+  hero.addEventListener('mousemove', event => {
+    const rect = hero.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    heroImage.style.transform = `translate(${x * -20}px, ${y * -12}px) scale(1.04)`;
+    heroImage.style.transition = 'transform 0.1s';
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    heroImage.style.transform = '';
+    heroImage.style.transition = 'transform 0.8s cubic-bezier(.16,1,.3,1)';
+  });
+}
+
+
