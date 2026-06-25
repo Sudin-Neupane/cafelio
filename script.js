@@ -591,5 +591,25 @@ function initHeroHover() {
     heroImage.style.transition = 'transform 0.8s cubic-bezier(.16,1,.3,1)';
   });
 }
+function init() {
+  initGrain();
+  initCursor();
+  initHeader();
+  initSmoothScroll();
+  initReveal();
+  initParallax();
+  initTypewriter();
+  initMagneticButtons();
+  initTiltCards();
+  initSteam();
+  initMarquee();
+  initActiveNav();
+  initCounters();
+  initScrambleTitles();
+  initContactForm();
+  initLoader();
+  initHeroHover();
+}
 
+document.addEventListener('DOMContentLoaded', init);
 
